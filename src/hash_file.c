@@ -4,6 +4,7 @@
 
 #include "bf.h"
 #include "hash_file.h"
+#include "structures.h"
 #define MAX_OPEN_FILES 20
 
 #define CALL_BF(call)       \
@@ -15,8 +16,18 @@
   }                         \
 }
 
+//Declaration of a global array (for opening files).
+Fileindex files[MAX_OPEN_FILES];
+
 HT_ErrorCode HT_Init() {
-  //insert code here
+  //Initialization of members of struct Fileindex.
+  for(int i=0;i<MAX_OPEN_FILES;i++)
+  {
+    files[i].flag=0;
+    files[i].filedesc=0;
+    files[i].buckets=0;
+    strcpy(files[i].filename,"0");
+  }
   return HT_OK;
 }
 

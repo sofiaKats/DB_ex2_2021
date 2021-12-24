@@ -4,6 +4,8 @@
 #include <time.h>
 #include "bf.h"
 #include "hash_file.h"
+#include "blocks.h"
+#include "buckets.h"
 
 #define RECORDS_NUM 1000 // you can change it if you want
 #define GLOBAL_DEPT 2 // you can change it if you want
@@ -88,6 +90,20 @@ int main() {
     CALL_OR_DIE(HT_InsertEntry(indexDesc, record));
   }
 
+  Block* blocknode = malloc (sizeof (struct Block));
+  blocknode->block_id = 2;
+  blocknode->local_depth = 0;
+  //for(int i=0; i<8; i++) blocknode->records_arr[i] = record;
+  BlockNode* block_list = NULL;
+  InsertLastInBlockList(&block_list,blocknode);
+  PrintBlockList(block_list);
+  DeleteBlockList(&block_list);
+
+  BucketNode* bucket_list = NULL;
+  InsertLastInBucketList(&bucket_list,blocknode,0);
+  PrintBucketList(bucket_list);
+  DeleteBucketList(&bucket_list);
+
   printf("RUN PrintAllEntries\n");
   int id = rand() % RECORDS_NUM;
   CALL_OR_DIE(HT_PrintAllEntries(indexDesc, &id));
@@ -95,5 +111,5 @@ int main() {
 
 
   CALL_OR_DIE(HT_CloseFile(indexDesc));
-  BF_Close();
+  //BF_Close();
 }
