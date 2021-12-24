@@ -15,13 +15,6 @@ typedef struct Fileindex
   char filename[20];
 } Fileindex; 
 
-// List of bucket nodes
-typedef struct BucketList
-{
-    BucketNode* bucket;
-    struct BucketList* next;
-}BucketList;
-
 // Representation of Buckets
 struct BucketNode
 {
@@ -44,10 +37,10 @@ struct Block
 };
 
 // List to hold all blocks with records
-typedef struct BlockList
+typedef struct BlockNode
 {
     Block* block;
-    struct BlockList* next; 
-}BlockList;
+    struct BlockNode* next; 
+}BlockNode;
 
 #endif // STRUCTURES_H
