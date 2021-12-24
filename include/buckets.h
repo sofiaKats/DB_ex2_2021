@@ -22,6 +22,9 @@ void InsertLastInBucketList(BucketNode **list, Block* block, int bucket_index);
 // prints the entire list
 void PrintBucketList(BucketNode* list);
 
+// Searches for a bucket node by index on the list
+BucketNode* SearchIndex(BucketNode* list, int item);
+
 // deletes one item from the list
 void deleteNodeInBucket(BucketNode **head_ref, int key);
 

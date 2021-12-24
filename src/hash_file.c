@@ -25,7 +25,6 @@ HT_ErrorCode HT_Init() {
   {
     files[i].flag=0;
     files[i].filedesc=0;
-    files[i].buckets=0;
     strcpy(files[i].filename,"0");
   }
   return HT_OK;

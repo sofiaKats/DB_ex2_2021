@@ -39,6 +39,19 @@ void PrintBucketList(BucketNode* list)
   printf("\n");
 }
 
+BucketNode* SearchIndex(BucketNode* list, int item){
+  BucketNode* current;
+  current = list;
+  while (current != NULL)
+  { // we search all the nodes of the list
+    if (item == current->bucket_index)
+      return current; // if we find it then we keep the node
+    else
+      current = current->next; // else we keep searching
+  }
+  return NULL; // if we dont then item in not in the list
+}
+
 // deletes one item from the list
 void deleteNodeInBucket(BucketNode **head_ref, int key)
 {
