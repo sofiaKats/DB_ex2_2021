@@ -1,6 +1,9 @@
 #ifndef BUCKETS_H
 #define BUCKETS_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "blocks.h"
 
 typedef struct BucketNode BucketNode;
@@ -13,5 +16,16 @@ struct BucketNode
     BucketNode* next;
 };
 
+// inserts an item at the end of the list
+void InsertLastInBucketList(BucketNode **list, Block* block, int bucket_index);
+
+// prints the entire list
+void PrintBucketList(BucketNode* list);
+
+// deletes one item from the list
+void deleteNodeInBucket(BucketNode **head_ref, int key);
+
+// deletes the entire list
+void DeleteBucketList(BucketNode **list);
 
 #endif // BUCKETS_H
