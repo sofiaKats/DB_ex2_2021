@@ -30,9 +30,15 @@ struct BucketNode
     BucketNode* next;
 };
 
+typedef struct Block0
+{
+    int global_depth;
+    int num_of_index; // plh8os eurethriwn
+} Block0;
+
 struct Block
 {
-    int block_id;
+    int block_id;           // = bucket index
 	int local_depth;
     Record records_arr[8];	// array that will hold the 8 records  
 };
@@ -43,7 +49,5 @@ typedef struct BlockList
     Block* block;
     struct BlockList* next; 
 }BlockList;
-
-
 
 #endif // STRUCTURES_H
