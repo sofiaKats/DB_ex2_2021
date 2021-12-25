@@ -31,4 +31,8 @@ void deleteNodeInBucket(BucketNode **head_ref, int key);
 // deletes the entire list
 void DeleteBucketList(BucketNode **list);
 
+int hash_function(int id,int depth);
+
+int find_index(int hashed_value,int depth);
+
 #endif // BUCKETS_H

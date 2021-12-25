@@ -16,6 +16,9 @@ typedef struct Fileindex
   char filename[20];
   Structures* structure; // each file includes: block0 | indexBlock (eurethrio) | Buckets, structure has all the above 
 } Fileindex; 
+
+int initialise_structure(Structures* structure, int global_depth);
+
 /*
 typedef struct Block0
 {
