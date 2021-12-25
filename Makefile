@@ -4,7 +4,7 @@ sht:
 
 ht:
 	@echo " Compile ht_main ...";
-	gcc -I ./include/ -L ./lib/ -Wl,-rpath,./lib/ ./examples/ht_main.c ./src/hash_file.c ./src/structures.c ./lists/block_list.c ./lists/bucket_list.c -lbf -o ./build/runner -O2
+	gcc -I ./include/ -g -L ./lib/ -Wl,-rpath,./lib/ ./examples/ht_main.c ./src/hash_file.c ./src/structures.c ./lists/block_list.c ./lists/bucket_list.c -lbf -o ./build/runner -O2
 
 bf:
 	@echo " Compile bf_main ...";
