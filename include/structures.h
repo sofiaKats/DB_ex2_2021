@@ -5,6 +5,8 @@
 
 #include "buckets.h"
 #include "blocks.h"
+#include "bucket_list.h"
+#include "block_list.h"
 
 typedef struct Structures Structures;
 

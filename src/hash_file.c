@@ -3,8 +3,15 @@
 #include <string.h>
 
 #include "bf.h"
+#include "buckets.h"
+#include "blocks.h"
 #include "hash_file.h"
 #include "structures.h"
+
+#include "bucket_list.h"
+#include "block_list.h"
+
+
 #define MAX_OPEN_FILES 20
 #define GLOBAL_DEPT 2
 
@@ -19,6 +26,7 @@
 
 //Declaration of a global array (for opening files).
 static Fileindex files[MAX_OPEN_FILES];
+static int block_id = 0;
 
 HT_ErrorCode HT_Init() {
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
@@ -88,6 +96,23 @@ HT_ErrorCode HT_CloseFile(int indexDesc) {
 
 HT_ErrorCode HT_InsertEntry(int indexDesc, Record record) {
   //insert code here
+  int hashed_value = hash_function(record.id,files[indexDesc].structure->global_depth);
+  int index = find_index(hashed_value,files[indexDesc].structure->global_depth);
+
+  BucketNode* b = SearchIndex(files[indexDesc].structure->bucket_list,index);
+  if (b->block==NULL){
+    b->block = malloc(sizeof(Block));
+    initialise_block(block_id,files[indexDesc].structure->global_depth,b->block);
+    block_id++;
+    printf("block is now is %d\n",block_id);
+  }
+
+  int result_of_insert = bucket_insert(record,b);
+
+  if (result_of_insert == -1){
+    printf("There is not enough space directory need to grow!!!");
+  }
+  
   return HT_OK;
 }
 

@@ -1,4 +1,5 @@
 #include "buckets.h"
+#include "bucket_list.h"
 
 // inserts an item at the end of the list
 void InsertLastInBucketList(BucketNode **list, Block* block, int bucket_index)
@@ -106,15 +107,4 @@ void DeleteBucketList(BucketNode **list)
     in the caller. */
   *list = NULL;
 }
-int hash_function(int id, int depth){
-  
-  int i =2;
-  int j =32;
-  int hashed_value = (int) (id*2654435761 % (int)pow(i,j));
-  return hashed_value;
-}
 
-int find_index(int hashed_value,int depth){
-  int index = hashed_value >> (32-depth); 
-  return index;
-}

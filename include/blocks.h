@@ -12,26 +12,10 @@ struct Block
 {
     int block_id;           // = bucket index
 	int local_depth;
-    Record records_arr[8];	// array that will hold the 8 records  
+    int no_of_records;
+    Record* records_arr[8];	// array that will hold the 8 records  
 };
 
-// List to hold all blocks with records
-typedef struct BlockNode
-{
-    Block* block;
-    struct BlockNode* next; 
-}BlockNode;
-
-// inserts an item at the end of the list
-void InsertLastInBlockList(BlockNode **list, Block* block);
-
-// prints the entire list
-void PrintBlockList(BlockNode* list);
-
-// deletes one item from the list
-void deleteNodeInBlockList(BlockNode **head_ref, int key);
-
-// deletes the entire list
-void DeleteBlockList(BlockNode **list);
+void initialise_block(int id, int global_depth, Block* b);
 
 #endif // BLOCKS_H

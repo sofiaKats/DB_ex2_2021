@@ -1,4 +1,5 @@
 #include "blocks.h"
+#include "block_list.h"
 
 // inserts an item at the end of the list
 void InsertLastInBlockList(BlockNode **list, Block* block)
